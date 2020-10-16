@@ -1,0 +1,15 @@
+mespaces:
+- name: hdmf-ml
+  doc: An extension to HDMF for storing data to be using for machine learning
+  author:
+  - Andrew Tritt
+  - Ryan Ly
+  contact:
+  - ajtritt@lbl.gov
+  - rly@lbl.gov
+  full_name: HDMF Machine Learning
+  schema:
+  - doc: structures for storing ML data in a tabular fashion
+    source: ml_table.yaml
+    title: Machine learning table
+  version: 0.0.1

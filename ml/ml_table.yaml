@@ -1,0 +1,65 @@
+# hdmf-schema-language=2.0.2
+datasets:
+- data_type_def: TrainValidationTestMask
+  data_type_inc: VocabData
+  doc: A column for storing which part of the ML workflow a sample was used in
+  attributes:
+  - name: vocabulary
+    default_value:
+      - train
+      - validation
+      - test
+    doc: The available items in the controlled vocabulary.
+
+- data_type_def: CrossValidationMask
+  data_type_inc: VocabData
+  doc: A column for storing which part of the ML workflow a sample was used in
+  attributes:
+  - name: n_splits
+    dtype: int
+    doc: the number of cross-validation splits used
+
+- data_type_def: ClassProbability
+  data_type_inc: VectorData
+  dtype: int
+  doc: A column for storing the class probability for each class across the samples
+
+- data_type_def: ClassLabel
+  data_type_inc: VectorData
+  doc: A column to store which class a sample was classified as
+  dtype: int
+  attributes:
+  - name: vocabulary
+    dtype:
+      reftype: object
+      target_type: ClassProbability
+    required: false
+    doc: the class probabilities from which these class labels were determined
+
+- data_type_def: ClusterLabel
+  data_type_inc: VectorData
+  doc: A column to store which cluster a sample was clustered into
+  dtype: int
+
+- data_type_def: ClassProbability
+  data_type_inc: VectorData
+  doc: A column for storing the class probability for each
+  dtype: int
+
+groups:
+- data_type_def: ResultsTable
+  data_type_inc: DynamicTable
+  doc: A table for storing sequence data
+  datasets:
+  - data_type_inc: TrainValidationTestMask
+    doc: a column indicate if a sample was used for training, testing or validation
+    quantity: '?'
+  - data_type_inc: CrossValidationMask
+    doc: a column to indicate which cross-validation fold a sample was part of
+    quantity: '?'
+  - data_type_inc: ClassLabel
+    doc: a column to indicate which cross-validation fold a sample was part of
+    quantity: '?'
+  - data_type_inc: ClusterLabel
+    doc: a column to indicate which cross-validation fold a sample was part of
+    quantity: '?'
