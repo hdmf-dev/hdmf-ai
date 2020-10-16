@@ -41,10 +41,10 @@ datasets:
   doc: A column to store which cluster a sample was clustered into
   dtype: int
 
-- data_type_def: ClassProbability
+- data_type_def: NetworkOutputs
   data_type_inc: VectorData
-  doc: A column for storing the class probability for each
-  dtype: int
+  doc: A column to store which neural network output
+  dtype: float
 
 groups:
 - data_type_def: ResultsTable
