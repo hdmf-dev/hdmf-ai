@@ -1,5 +1,16 @@
 # hdmf-schema-language=2.0.2
 datasets:
+- data_type_def: SupervisedOutput
+  data_type_inc: VectorData
+  doc: A column to store supervised learning output
+  attributes:
+  - name: training_label
+    dtype:
+      reftype: object
+      target_type: VectorData
+    required: false
+    doc: the training labels that were used
+  
 - data_type_def: TrainValidationTestMask
   data_type_inc: VocabData
   doc: A column for storing which part of the ML workflow a sample was used in
@@ -20,12 +31,12 @@ datasets:
     doc: the number of cross-validation splits used
 
 - data_type_def: ClassProbability
-  data_type_inc: VectorData
+  data_type_inc: SupervisedOutput
   dtype: int
   doc: A column for storing the class probability for each class across the samples
 
 - data_type_def: ClassLabel
-  data_type_inc: VectorData
+  data_type_inc: SupervisedOutput
   doc: A column to store which class a sample was classified as
   dtype: int
   attributes:
@@ -36,15 +47,24 @@ datasets:
     required: false
     doc: the class probabilities from which these class labels were determined
 
+- data_type_def: RegressionOutput
+  data_type_inc: SupervisedOutput
+  doc: A column to store regression outputs for each sample
+  dtype: float
+
 - data_type_def: ClusterLabel
   data_type_inc: VectorData
   doc: A column to store which cluster a sample was clustered into
   dtype: int
 
-- data_type_def: NetworkOutputs
+- data_type_def: EmbeddedValues
   data_type_inc: VectorData
-  doc: A column to store which neural network output
+  doc: A column to store embeddings for each sample
   dtype: float
+  dims:
+  - ndims
+  shape:
+  - null
 
 groups:
 - data_type_def: ResultsTable
@@ -57,9 +77,18 @@ groups:
   - data_type_inc: CrossValidationMask
     doc: a column to indicate which cross-validation fold a sample was part of
     quantity: '?'
+  - data_type_inc: ClassProbability
+    doc: a column to store the class probability for each class across the samples
+    quantity: '?'
   - data_type_inc: ClassLabel
-    doc: a column to indicate which cross-validation fold a sample was part of
+    doc: a column to store which class a sample was classified as
+    quantity: '?'
+  - data_type_inc: RegressionOutput
+    doc: a column to store regression outputs for each sample
     quantity: '?'
   - data_type_inc: ClusterLabel
-    doc: a column to indicate which cross-validation fold a sample was part of
+    doc: a column to store which cluster a sample was clustered into
+    quantity: '?'
+  - data_type_inc: EmbeddedValues
+    doc: a column to store embeddings for each sample
     quantity: '?'
