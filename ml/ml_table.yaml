@@ -24,7 +24,7 @@ datasets:
 
 - data_type_def: CrossValidationMask
   data_type_inc: VocabData
-  doc: A column for storing which part of the ML workflow a sample was used in
+  doc: A column for storing which cross validation split a sample is part of
   attributes:
   - name: n_splits
     dtype: int
