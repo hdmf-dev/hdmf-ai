@@ -1,4 +1,4 @@
-mespaces:
+namespaces:
 - name: hdmf-ml
   doc: An extension to HDMF for storing data to be using for machine learning
   author:
