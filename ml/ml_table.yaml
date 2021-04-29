@@ -12,7 +12,7 @@ datasets:
     doc: the training labels that were used
   
 - data_type_def: TrainValidationTestMask
-  data_type_inc: VocabData
+  data_type_inc: EnumData
   doc: A column for storing which part of the ML workflow a sample was used in
   attributes:
   - name: vocabulary
@@ -23,7 +23,7 @@ datasets:
     doc: The available items in the controlled vocabulary.
 
 - data_type_def: CrossValidationMask
-  data_type_inc: VocabData
+  data_type_inc: EnumData
   doc: A column for storing which cross validation split a sample is part of
   attributes:
   - name: n_splits
