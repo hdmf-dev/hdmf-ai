@@ -10,6 +10,7 @@ namespaces:
   full_name: HDMF Machine Learning
   schema:
   - namespace: hdmf-common
+  - namespace: hdmf-experimental
   - doc: structures for storing ML data in a tabular fashion
     source: ml_table.yaml
     title: Machine learning table
