@@ -14,13 +14,13 @@ datasets:
 - data_type_def: TrainValidationTestMask
   data_type_inc: EnumData
   doc: A column for storing which part of the ML workflow a sample was used in
-  attributes:
-  - name: vocabulary
-    default_value:
-      - train
-      - validation
-      - test
-    doc: The available items in the controlled vocabulary.
+  #attributes:
+  #- name: vocabulary
+  #  default_value:
+  #    - train
+  #    - validation
+  #    - test
+  #  doc: The available items in the controlled vocabulary.
 
 - data_type_def: CrossValidationMask
   data_type_inc: EnumData
