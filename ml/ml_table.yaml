@@ -79,7 +79,7 @@ groups:
     data_type_inc: CrossValidationMask
     doc: a column to indicate which cross-validation fold a sample was part of
     quantity: '?'
-  - name: class_prob
+  - name: class_proba
     data_type_inc: ClassProbability
     doc: a column to store the class probability for each class across the samples
     quantity: '?'
