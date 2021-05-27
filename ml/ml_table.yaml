@@ -11,7 +11,7 @@ datasets:
     required: false
     doc: the training labels that were used
 
-- data_type_def: TrainValidationTestMask
+- data_type_def: TrainValidationTestSplit
   data_type_inc: EnumData
   doc: A column for storing which part of the ML workflow a sample was used in
   #attributes:
@@ -22,7 +22,7 @@ datasets:
   #    - test
   #  doc: The available items in the controlled vocabulary.
 
-- data_type_def: CrossValidationMask
+- data_type_def: CrossValidationSplit
   data_type_inc: EnumData
   doc: A column for storing which cross validation split a sample is part of
   attributes:
@@ -72,11 +72,11 @@ groups:
   doc: A table for storing sequence data
   datasets:
   - name: tvt_split
-    data_type_inc: TrainValidationTestMask
+    data_type_inc: TrainValidationTestSplit
     doc: a column indicate if a sample was used for training, testing or validation
     quantity: '?'
   - name: cv_split
-    data_type_inc: CrossValidationMask
+    data_type_inc: CrossValidationSplit
     doc: a column to indicate which cross-validation fold a sample was part of
     quantity: '?'
   - name: class_proba
