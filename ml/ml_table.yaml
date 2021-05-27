@@ -95,7 +95,7 @@ groups:
     data_type_inc: ClusterLabel
     doc: a column to store which cluster a sample was clustered into
     quantity: '?'
-  - name: embedded_vals
+  - name: embedding
     data_type_inc: EmbeddedValues
     doc: a column to store embeddings for each sample
     quantity: '?'
