@@ -32,7 +32,7 @@ datasets:
 
 - data_type_def: ClassProbability
   data_type_inc: SupervisedOutput
-  dtype: int
+  dtype: float
   doc: A column for storing the class probability for each class across the samples
 
 - data_type_def: ClassLabel
