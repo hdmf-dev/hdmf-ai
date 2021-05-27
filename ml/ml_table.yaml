@@ -71,7 +71,7 @@ groups:
   data_type_inc: DynamicTable
   doc: A table for storing sequence data
   datasets:
-  - name: tvt_mask
+  - name: tvt_split
     data_type_inc: TrainValidationTestMask
     doc: a column indicate if a sample was used for training, testing or validation
     quantity: '?'
