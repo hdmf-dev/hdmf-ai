@@ -75,7 +75,7 @@ groups:
     data_type_inc: TrainValidationTestMask
     doc: a column indicate if a sample was used for training, testing or validation
     quantity: '?'
-  - name: cv_mask
+  - name: cv_split
     data_type_inc: CrossValidationMask
     doc: a column to indicate which cross-validation fold a sample was part of
     quantity: '?'
