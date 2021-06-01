@@ -87,7 +87,7 @@ groups:
     data_type_inc: ClassLabel
     doc: a column to store which class a sample was classified as
     quantity: '?'
-  - name: reg_output
+  - name: predicted_value
     data_type_inc: RegressionOutput
     doc: a column to store regression outputs for each sample
     quantity: '?'
