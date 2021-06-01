@@ -10,8 +10,8 @@ datasets:
       target_type: VectorData
     required: false
     doc: the training labels that were used
-  
-- data_type_def: TrainValidationTestMask
+
+- data_type_def: TrainValidationTestSplit
   data_type_inc: EnumData
   doc: A column for storing which part of the ML workflow a sample was used in
   #attributes:
@@ -22,7 +22,7 @@ datasets:
   #    - test
   #  doc: The available items in the controlled vocabulary.
 
-- data_type_def: CrossValidationMask
+- data_type_def: CrossValidationSplit
   data_type_inc: EnumData
   doc: A column for storing which cross validation split a sample is part of
   attributes:
@@ -32,7 +32,7 @@ datasets:
 
 - data_type_def: ClassProbability
   data_type_inc: SupervisedOutput
-  dtype: int
+  dtype: float
   doc: A column for storing the class probability for each class across the samples
 
 - data_type_def: ClassLabel
@@ -71,24 +71,31 @@ groups:
   data_type_inc: DynamicTable
   doc: A table for storing sequence data
   datasets:
-  - data_type_inc: TrainValidationTestMask
+  - name: tvt_split
+    data_type_inc: TrainValidationTestSplit
     doc: a column indicate if a sample was used for training, testing or validation
     quantity: '?'
-  - data_type_inc: CrossValidationMask
+  - name: cv_split
+    data_type_inc: CrossValidationSplit
     doc: a column to indicate which cross-validation fold a sample was part of
     quantity: '?'
-  - data_type_inc: ClassProbability
+  - name: predicted_proba
+    data_type_inc: ClassProbability
     doc: a column to store the class probability for each class across the samples
     quantity: '?'
-  - data_type_inc: ClassLabel
+  - name: predicted_class
+    data_type_inc: ClassLabel
     doc: a column to store which class a sample was classified as
     quantity: '?'
-  - data_type_inc: RegressionOutput
+  - name: predicted_value
+    data_type_inc: RegressionOutput
     doc: a column to store regression outputs for each sample
     quantity: '?'
-  - data_type_inc: ClusterLabel
+  - name: cluster_label
+    data_type_inc: ClusterLabel
     doc: a column to store which cluster a sample was clustered into
     quantity: '?'
-  - data_type_inc: EmbeddedValues
+  - name: embedding
+    data_type_inc: EmbeddedValues
     doc: a column to store embeddings for each sample
     quantity: '?'
