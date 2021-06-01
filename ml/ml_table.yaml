@@ -83,7 +83,7 @@ groups:
     data_type_inc: ClassProbability
     doc: a column to store the class probability for each class across the samples
     quantity: '?'
-  - name: class_label
+  - name: predicted_class
     data_type_inc: ClassLabel
     doc: a column to store which class a sample was classified as
     quantity: '?'
