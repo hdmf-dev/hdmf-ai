@@ -42,14 +42,6 @@ datasets:
   data_type_inc: SupervisedOutput
   dtype: float
   doc: A column for storing the class probability for each class across the samples
-  attributes:
-  - name: training_labels
-    dtype:
-      reftype: object
-      target_type: VectorData
-    required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
-      in the same ResultsTable.
 
 - data_type_def: ClassLabel
   data_type_inc: SupervisedOutput
@@ -62,13 +54,6 @@ datasets:
       target_type: ClassProbability
     required: false
     doc: The class probabilities from which these class labels were determined
-  - name: training_labels
-    dtype:
-      reftype: object
-      target_type: VectorData
-    required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
-      in the same ResultsTable.
 
 - data_type_def: RegressionOutput
   data_type_inc: SupervisedOutput
