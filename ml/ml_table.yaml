@@ -1,15 +1,23 @@
 # hdmf-schema-language=2.0.2
 datasets:
+- data_type_def: TrueLabel
+  data_type_inc: VectorData
+  doc: A column to store the true labels for each sample. To store labels as strings, use EnumData.
+    The training_labels attribute on other columns in the ResultsTable should reference this column
+    if present.
+  dtype: int
+
 - data_type_def: SupervisedOutput
   data_type_inc: VectorData
   doc: A column to store supervised learning output
   attributes:
-  - name: training_label
+  - name: training_labels
     dtype:
       reftype: object
       target_type: VectorData
     required: false
-    doc: the training labels that were used
+    doc: The training labels that were used. Reference the TrueLabel column if present
+      in the same ResultsTable.
 
 - data_type_def: TrainValidationTestSplit
   data_type_inc: EnumData
@@ -28,24 +36,39 @@ datasets:
   attributes:
   - name: n_splits
     dtype: int
-    doc: the number of cross-validation splits used
+    doc: The number of cross-validation splits used
 
 - data_type_def: ClassProbability
   data_type_inc: SupervisedOutput
   dtype: float
   doc: A column for storing the class probability for each class across the samples
+  attributes:
+  - name: training_labels
+    dtype:
+      reftype: object
+      target_type: VectorData
+    required: false
+    doc: The training labels that were used. Reference the TrueLabel column if present
+      in the same ResultsTable.
 
 - data_type_def: ClassLabel
   data_type_inc: SupervisedOutput
   doc: A column to store which class a sample was classified as
   dtype: int
   attributes:
-  - name: vocabulary
+  - name: probabilities
     dtype:
       reftype: object
       target_type: ClassProbability
     required: false
-    doc: the class probabilities from which these class labels were determined
+    doc: The class probabilities from which these class labels were determined
+  - name: training_labels
+    dtype:
+      reftype: object
+      target_type: VectorData
+    required: false
+    doc: The training labels that were used. Reference the TrueLabel column if present
+      in the same ResultsTable.
 
 - data_type_def: RegressionOutput
   data_type_inc: SupervisedOutput
@@ -56,6 +79,14 @@ datasets:
   data_type_inc: VectorData
   doc: A column to store which cluster a sample was clustered into
   dtype: int
+  attributes:
+  - name: training_labels
+    dtype:
+      reftype: object
+      target_type: VectorData
+    required: false
+    doc: The training labels that were used. Reference the TrueLabel column if present
+      in the same ResultsTable.
 
 - data_type_def: EmbeddedValues
   data_type_inc: VectorData
@@ -73,29 +104,33 @@ groups:
   datasets:
   - name: tvt_split
     data_type_inc: TrainValidationTestSplit
-    doc: a column indicate if a sample was used for training, testing or validation
+    doc: A column to indicate if a sample was used for training, testing or validation
     quantity: '?'
   - name: cv_split
     data_type_inc: CrossValidationSplit
-    doc: a column to indicate which cross-validation fold a sample was part of
+    doc: A column to indicate which cross-validation fold a sample was part of
+    quantity: '?'
+  - name: true_label
+    data_type_inc: TrueLabel
+    doc: A column to store the true label for each sample
     quantity: '?'
   - name: predicted_proba
     data_type_inc: ClassProbability
-    doc: a column to store the class probability for each class across the samples
+    doc: A column to store the class probability for each class across the samples
     quantity: '?'
   - name: predicted_class
     data_type_inc: ClassLabel
-    doc: a column to store which class a sample was classified as
+    doc: A column to store which class a sample was classified as
     quantity: '?'
   - name: predicted_value
     data_type_inc: RegressionOutput
-    doc: a column to store regression outputs for each sample
+    doc: A column to store regression outputs for each sample
     quantity: '?'
   - name: cluster_label
     data_type_inc: ClusterLabel
-    doc: a column to store which cluster a sample was clustered into
+    doc: A column to store which cluster a sample was clustered into
     quantity: '?'
   - name: embedding
     data_type_inc: EmbeddedValues
-    doc: a column to store embeddings for each sample
+    doc: A column to store embeddings for each sample
     quantity: '?'
