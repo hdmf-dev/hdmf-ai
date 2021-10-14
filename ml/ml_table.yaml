@@ -80,6 +80,11 @@ groups:
   data_type_inc: DynamicTable
   doc: A table for storing sequence data
   datasets:
+  - name: tvt_split_elements
+    data_type_inc: VectorData
+    doc: Fixed set of elements referenced by tvt_split EnumData column. 
+      Usually has values 'train', 'validation', 'test'
+    quantity: '?'
   - name: tvt_split
     data_type_inc: TrainValidationTestSplit
     doc: A column to indicate if a sample was used for training, testing or validation
