@@ -9,7 +9,7 @@ datasets:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
+    doc: The training labels that were used. Reference the true_label column if present
       in the same ResultsTable.
 
 - data_type_def: TrainValidationTestSplit
@@ -63,7 +63,7 @@ datasets:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
+    doc: The training labels that were used. Reference the true_label column if present
       in the same ResultsTable.
 
 - data_type_def: EmbeddedValues
