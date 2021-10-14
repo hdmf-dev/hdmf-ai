@@ -93,8 +93,6 @@ groups:
     doc: A column to store the true labels for each sample. To store labels as strings, use EnumData.
       The training_labels attribute on other columns in the ResultsTable should reference this column
       if present.
-    dtype: int
-    doc: A column to store the true label for each sample
     quantity: '?'
   - name: predicted_proba
     data_type_inc: ClassProbability
