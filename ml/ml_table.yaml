@@ -1,12 +1,5 @@
 # hdmf-schema-language=2.0.2
 datasets:
-- data_type_def: TrueLabel
-  data_type_inc: VectorData
-  doc: A column to store the true labels for each sample. To store labels as strings, use EnumData.
-    The training_labels attribute on other columns in the ResultsTable should reference this column
-    if present.
-  dtype: int
-
 - data_type_def: SupervisedOutput
   data_type_inc: VectorData
   doc: A column to store supervised learning output
@@ -16,7 +9,7 @@ datasets:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
+    doc: The training labels that were used. Reference the true_label column if present
       in the same ResultsTable.
 
 - data_type_def: TrainValidationTestSplit
@@ -70,7 +63,7 @@ datasets:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the TrueLabel column if present
+    doc: The training labels that were used. Reference the true_label column if present
       in the same ResultsTable.
 
 - data_type_def: EmbeddedValues
@@ -96,8 +89,10 @@ groups:
     doc: A column to indicate which cross-validation fold a sample was part of
     quantity: '?'
   - name: true_label
-    data_type_inc: TrueLabel
-    doc: A column to store the true label for each sample
+    data_type_inc: VectorData
+    doc: A column to store the true labels for each sample. To store labels as strings, use EnumData.
+      The training_labels attribute on other columns in the ResultsTable should reference this column
+      if present.
     quantity: '?'
   - name: predicted_proba
     data_type_inc: ClassProbability
