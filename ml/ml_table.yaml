@@ -99,7 +99,7 @@ groups:
       The training_labels attribute on other columns in the ResultsTable should reference this column
       if present.
     quantity: '?'
-  - name: predicted_proba
+  - name: predicted_probability
     data_type_inc: ClassProbability
     doc: A column to store the class probability for each class across the samples
     quantity: '?'
