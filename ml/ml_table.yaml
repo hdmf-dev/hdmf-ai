@@ -48,6 +48,16 @@ datasets:
     required: false
     doc: The class probabilities from which these class labels were determined
 
+- data_type_def: TopKProbabilities
+  data_type_inc: SupervisedOutput
+  dtype: float
+  doc: A column for storing the top k class probabilities. Probabilities should be order in descending order.
+
+- data_type_def: TopKClasses
+  data_type_inc: SupervisedOutput
+  dtype: float
+  doc: A column for storing the top k classes
+
 - data_type_def: RegressionOutput
   data_type_inc: SupervisedOutput
   doc: A column to store regression outputs for each sample
@@ -82,7 +92,7 @@ groups:
   datasets:
   - name: tvt_split_elements
     data_type_inc: VectorData
-    doc: Fixed set of elements referenced by tvt_split EnumData column. 
+    doc: Fixed set of elements referenced by tvt_split EnumData column.
       Usually has values 'train', 'validate', 'test'
     quantity: '?'
   - name: tvt_split
