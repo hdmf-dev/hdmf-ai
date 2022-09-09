@@ -15,13 +15,6 @@ datasets:
 - data_type_def: TrainValidationTestSplit
   data_type_inc: EnumData
   doc: A column for storing which part of the ML workflow a sample was used in
-  #attributes:
-  #- name: vocabulary
-  #  default_value:
-  #    - train
-  #    - validate
-  #    - test
-  #  doc: The available items in the controlled vocabulary.
 
 - data_type_def: CrossValidationSplit
   data_type_inc: EnumData
@@ -47,6 +40,16 @@ datasets:
       target_type: ClassProbability
     required: false
     doc: The class probabilities from which these class labels were determined
+
+- data_type_def: TopKProbabilities
+  data_type_inc: SupervisedOutput
+  dtype: float
+  doc: A column for storing the top k class probabilities. Probabilities should be ordered in descending order.
+
+- data_type_def: TopKClasses
+  data_type_inc: SupervisedOutput
+  dtype: int
+  doc: A column for storing the top k classes, used for top-k accuracy calculation.
 
 - data_type_def: RegressionOutput
   data_type_inc: SupervisedOutput
@@ -82,7 +85,7 @@ groups:
   datasets:
   - name: tvt_split_elements
     data_type_inc: VectorData
-    doc: Fixed set of elements referenced by tvt_split EnumData column. 
+    doc: Fixed set of elements referenced by tvt_split EnumData column.
       Usually has values 'train', 'validate', 'test'
     quantity: '?'
   - name: tvt_split
@@ -118,4 +121,12 @@ groups:
   - name: embedding
     data_type_inc: EmbeddedValues
     doc: A column to store embeddings for each sample
+    quantity: '?'
+  - name: topk_classes
+    data_type_inc: TopKClasses
+    doc: A column to store the top k classes
+    quantity: '?'
+  - name: topk_probabilities
+    data_type_inc: TopKProbabilities
+    doc: A column to store the top k probabilities
     quantity: '?'
