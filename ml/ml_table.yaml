@@ -44,7 +44,7 @@ datasets:
 - data_type_def: TopKProbabilities
   data_type_inc: SupervisedOutput
   dtype: float
-  doc: A column for storing the top k class probabilities. Probabilities should be order in descending order.
+  doc: A column for storing the top k class probabilities. Probabilities should be ordered in descending order.
 
 - data_type_def: TopKClasses
   data_type_inc: SupervisedOutput
