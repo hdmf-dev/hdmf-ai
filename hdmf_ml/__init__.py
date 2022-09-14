@@ -13,4 +13,6 @@ def __get_resources():
 CORE_NAMESPACE = 'hdmf-ml'
 load_namespaces(__get_resources()['namespace_path'])
 
+from . import results_table
+
 ResultsTable = get_class('ResultsTable', CORE_NAMESPACE)
