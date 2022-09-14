@@ -22,7 +22,6 @@ print('found these packages:', pkgs)
 src_dir = os.path.dirname(__file__)
 shutil.copytree(os.path.join(src_dir, 'ml'), os.path.join(src_dir, 'hdmf_ml', 'schema'), dirs_exist_ok=True)
 
-exit()
 reqs = [
     'hdmf',
 ]
@@ -47,6 +46,9 @@ setup_args = {
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: BSD License",
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
@@ -64,7 +66,8 @@ setup_args = {
                 'data-format '
                 'open-source '
                 'open-science '
-                'reproducible-research ',
+                'reproducible-research '
+                'machine-learning',
     'zip_safe': False
 }
 
