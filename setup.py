@@ -24,6 +24,7 @@ shutil.copytree(os.path.join(src_dir, 'ml'), os.path.join(src_dir, 'hdmf_ml', 's
 
 reqs = [
     'hdmf',
+    'scikit-learn'
 ]
 
 print(reqs)
