@@ -1,0 +1,5 @@
+hdmf_ml/schema
+*.ipynb_checkpoints
+__pycache__
+*.pyc
+*.egg-info
