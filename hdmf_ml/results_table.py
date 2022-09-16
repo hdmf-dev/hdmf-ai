@@ -1,5 +1,5 @@
 from hdmf.utils import docval, popargs
-from hdmf.common import get_class, register_class, DynamicTable
+from hdmf.common import get_class, register_class, DynamicTable, ElementIdentifiers
 from hdmf.container import Container
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -15,8 +15,11 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
             allow_extra=True)
     def __add_col(self, **kwargs):
         cls, data, name, description = popargs('cls', 'data', 'name', 'description', kwargs)
-        if len(self.id) < len(data):
-            self.id.extend(np.arange(len(self.id), len(data)))
+        if len(self.id) == 0:
+            self.id.extend(np.arange(len(data)))
+        if len(self.id) != len(data):
+            raise ValueError(f'New column {name} of length {len(data)} is not the same length as '
+                             f'existings columns of length {len(self.id)}')
         if isinstance(cls, str):
             cls = get_class(cls, 'hdmf-ml')
         self.add_column(data=data, name=name, description=description, **kwargs)

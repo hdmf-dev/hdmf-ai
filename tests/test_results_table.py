@@ -18,20 +18,15 @@ class ResultsTableTest(TestCase):
             os.remove(self.path)
 
     def get_hdf5io(self):
-        #return get_hdf5io(self.path, 'w')
         return HDF5IO(self.path, 'w', manager=get_manager())
 
-
-    # add_tvt_split
-    # add_cv_split
-    # add_true_label
-    # add_predicted_probability
-    # add_predicted_class
-    # add_predicted_value
-    # add_cluster_label
-    # add_embedding
-    # add_topk_classes
-    # add_topk_probabilities
+    def test_ResultsTable_diff_len(self):
+        rt = ResultsTable('foo', 'a test results table')
+        rt.add_tvt_split([0, 1, 2, 0, 1])
+        msg = ('New column true_label of length 4 is not the same length as '
+               'existings columns of length 5')
+        with self.assertRaisesRegex(ValueError, msg):
+            rt.add_true_label([0, 0, 0, 1])
 
     def test_ResultsTable_tvt_split(self):
         rt = ResultsTable('foo', 'a test results table')
