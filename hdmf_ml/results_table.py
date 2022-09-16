@@ -24,17 +24,17 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
             cls = get_class(cls, 'hdmf-ml')
         self.add_column(data=data, name=name, description=description, col_cls=cls, **kwargs)
 
-    @docval({'name': 'data',        'type': 'array_data', 'doc': 'data for this column'},
+    @docval({'name': 'data',        'type': 'array_data', 'doc': 'train-validation-test split data'},
             {'name': 'name',        'type': str,     'doc': 'the name of this column', 'default': 'tvt_split'},
             {'name': 'description', 'type': str,     'doc': 'a description for this column', 'default': 'train/validation/test mask'})
     def add_tvt_split(self, **kwargs):
-        """Add mask of 0, 1, 2 indicating which samples were used for trainingi validation, and testing."""
+        """Add mask of 0, 1, 2 indicating which samples were used for training, validation, and testing."""
         kwargs['enum'] = ['train', 'validate', 'test']
         ret = self.__add_col('TrainValidationTestSplit', **kwargs)
 
 
-    @docval({'name': 'data',        'type': 'array_data', 'doc': 'train-validation-test split data'},
-            {'name': 'name',        'type': str,     'doc': 'the name of this column', 'default': 'tvt_split'},
+    @docval({'name': 'data',        'type': 'array_data', 'doc': 'cross-validation split data'},
+            {'name': 'name',        'type': str,     'doc': 'the name of this column', 'default': 'cv_split'},
             {'name': 'description', 'type': str,     'doc': 'a description for this column', 'default': "cross-validation split labels"})
     def add_cv_split(self, **kwargs):
         """Add cross-validation split mask"""
@@ -95,7 +95,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
 
     @docval({'name': 'data',        'type': 'array_data', 'doc': 'probabilities of the top-k predicted classes for each sample'},
             {'name': 'name',        'type': str,     'doc': 'the name of this column', 'default': 'topk_probabilities'},
-            {'name': 'description', 'type': str,     'doc': 'a description for this column', 'default': "the probabilityes of the top k predicted classes"})
+            {'name': 'description', 'type': str,     'doc': 'a description for this column', 'default': "the probabilities of the top k predicted classes"})
     def add_topk_probabilities(self, **kwargs):
         """Add probabilities for the top *k* predicted classes for each sample"""
         self.__add_col('TopKProbabilities', **kwargs)
