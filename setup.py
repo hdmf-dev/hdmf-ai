@@ -3,15 +3,7 @@
 from setuptools import setup, find_packages
 
 import os
-import re
 import shutil
-import subprocess
-
-def get_git_revision_hash():
-    return subprocess.check_output(['git', 'rev-parse', 'HEAD'])
-
-def get_git_revision_short_hash():
-    return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'])
 
 with open('README.md', 'r') as fp:
     readme = fp.read()
@@ -27,10 +19,8 @@ reqs = [
     'scikit-learn'
 ]
 
-print(reqs)
-
 setup_args = {
-    'version': get_git_revision_short_hash(),
+    'version': '0.0.1',
     'name': 'hdmf_ml',
     'description': 'A package for using the HDMF-ML schema',
     'long_description': readme,
