@@ -15,4 +15,4 @@ load_namespaces(__get_resources()['namespace_path'])
 
 from . import results_table
 
-ResultsTable = get_class('ResultsTable', CORE_NAMESPACE)
+from .results_table import ResultsTable

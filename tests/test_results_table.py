@@ -29,7 +29,7 @@ class ResultsTableTest(TestCase):
             rt.add_true_label([0, 0, 0, 1])
 
     def test_ResultsTable_tvt_split(self):
-        rt = ResultsTable('foo', 'a test results table')
+        rt = ResultsTable(name='foo', description='a test results table')
         rt.add_tvt_split([0, 1, 2, 0, 1])
         with self.get_hdf5io() as io:
             io.write(rt)

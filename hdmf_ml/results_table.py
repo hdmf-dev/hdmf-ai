@@ -22,7 +22,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
                              f'existings columns of length {len(self.id)}')
         if isinstance(cls, str):
             cls = get_class(cls, 'hdmf-ml')
-        self.add_column(data=data, name=name, description=description, **kwargs)
+        self.add_column(data=data, name=name, description=description, col_cls=cls, **kwargs)
 
     @docval({'name': 'data',        'type': 'array_data', 'doc': 'data for this column'},
             {'name': 'name',        'type': str,     'doc': 'the name of this column', 'default': 'tvt_split'},
