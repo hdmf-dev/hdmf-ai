@@ -17,8 +17,9 @@ datasets:
   doc: A column for storing which part of the ML workflow a sample was used in
 
 - data_type_def: CrossValidationSplit
-  data_type_inc: EnumData
+  data_type_inc: VectorData
   doc: A column for storing which cross validation split a sample is part of
+  dtype: int
   attributes:
   - name: n_splits
     dtype: int

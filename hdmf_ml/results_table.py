@@ -8,6 +8,14 @@ from sklearn.preprocessing import LabelEncoder
 @register_class('ResultsTable', 'hdmf-ml')
 class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
 
+    @docval({'name': 'name',        'type': str,          'default': 'root',
+             'doc': 'a name for these results e.g. params1'},
+            {'name': 'description', 'type': str,          'default': 'no description',
+             'doc': 'a human-readable description of the results e.g. training tricks, parameter, etc.'},
+            allow_extra=True)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
     @docval({'name': 'cls',         'type': (str, type), 'doc': 'data for this column'},
             {'name': 'data',        'type': 'array_data', 'doc': 'data for this column'},
             {'name': 'name',        'type': str,     'doc': 'the name of this column'},
@@ -38,6 +46,9 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
             {'name': 'description', 'type': str,     'doc': 'a description for this column', 'default': "cross-validation split labels"})
     def add_cv_split(self, **kwargs):
         """Add cross-validation split mask"""
+        kwargs['n_splits'] = np.max(kwargs['data']) + 1
+        if not isinstance(kwargs['n_splits'], (int, np.integer)):
+            raise ValueError('Got non-integer data for cross-validation split')
         self.__add_col("CrossValidationSplit", **kwargs)
 
     @docval({'name': 'data',        'type': 'array_data', 'doc': 'ground truth labels for each sample'},
