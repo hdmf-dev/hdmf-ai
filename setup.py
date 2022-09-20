@@ -24,7 +24,7 @@ setup_args = {
     'name': 'hdmf_ml',
     'description': 'A package for using the HDMF-ML schema',
     'long_description': readme,
-    'long_description_content_type': 'text/x-rst; charset=UTF-8',
+    'long_description_content_type': 'text/markdown',
     'author': 'Andrew Tritt',
     'author_email': 'ajtritt@lbl.gov',
     'url': 'https://github.com/hdmf-dev/hdmf-ml',

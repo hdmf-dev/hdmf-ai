@@ -38,7 +38,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
             {'name': 'name',        'type': str,          'doc': 'the name of this column', 'default': 'tvt_split'},
             {'name': 'description', 'type': str,          'doc': 'a description for this column', 'default': 'train/validation/test mask'})
     def add_tvt_split(self, **kwargs):
-        """Add mask of 0, 1, 2 indicating which samples were used for trainingi validation, and testing."""
+        """Add mask of 0, 1, 2 indicating which samples were used for training, validation, and testing."""
         kwargs['enum'] = ['train', 'validate', 'test']
         ret = self.__add_col('TrainValidationTestSplit', **kwargs)
 
