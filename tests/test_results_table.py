@@ -28,6 +28,13 @@ class ResultsTableTest(TestCase):
         with self.assertRaisesRegex(ValueError, msg):
             rt.add_true_label([0, 0, 0, 1])
 
+    def test_add_col_dupe_name(self):
+        rt = ResultsTable(name='foo', description='a test results table')
+        rt.add_tvt_split([0, 1, 2, 0, 1])
+        msg = "Column 'tvt_split' already exists in ResultsTable 'foo'"
+        with self.assertRaisesRegex(ValueError, msg):
+            rt.add_tvt_split([0, 1, 2, 0, 1])
+
     def test_add_tvt_split(self):
         rt = ResultsTable(name='foo', description='a test results table')
         rt.add_tvt_split([0, 1, 2, 0, 1])
