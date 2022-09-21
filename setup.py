@@ -15,8 +15,9 @@ src_dir = os.path.dirname(__file__)
 shutil.copytree(os.path.join(src_dir, 'ml'), os.path.join(src_dir, 'hdmf_ml', 'schema'), dirs_exist_ok=True)
 
 reqs = [
-    'hdmf',
-    'scikit-learn'
+    'hdmf>=3.4.5,<4',
+    'numpy',
+    'scikit-learn>=0.12'
 ]
 
 setup_args = {
