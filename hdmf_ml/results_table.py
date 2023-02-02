@@ -28,12 +28,12 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
     def n_samples(self):
         return self.__n_samples
 
-    @docval({'name': 'cls',         'type': (str, type), 'doc': 'data for this column'},
+    @docval({'name': 'cls',         'type': (str, type), 'doc': 'class for this column'},
             {'name': 'data',        'type': data_type,   'doc': 'data for this column'},
             {'name': 'name',        'type': str,         'doc': 'the name of this column'},
             {'name': 'description', 'type': str,         'doc': 'a description for this column'},
             {'name': 'dim2',        'type': str,         'doc': 'the argument holding the second dimension', 'default': None},
-            {'name': 'dtype',       'type': type,        'doc': 'the argument holding the second dimension', 'default': None},
+            {'name': 'dtype',       'type': type,        'doc': 'the dtype for the column data', 'default': None},
             allow_extra=True)
     def __add_col(self, **kwargs):
         """A helper function to handle boiler-plate code for adding columns to a ResultsTable"""
