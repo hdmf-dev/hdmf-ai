@@ -11,6 +11,7 @@ data_type = ('array_data', 'data')
 
 @register_class('ResultsTable', 'hdmf-ml')
 class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
+    # override the auto-generated ResultsTable class
 
     @docval({'name': 'name',        'type': str,          'default': 'root',
              'doc': 'a name for these results e.g. params1'},
