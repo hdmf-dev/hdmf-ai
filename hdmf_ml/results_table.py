@@ -121,7 +121,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
         kwargs['dim2'] = 'n_classes'
         return self.__add_col('ClassProbability', **kwargs)
 
-    @docval({'name': 'data',        'type': data_type, 'doc': 'predicted class lable for each sample', 'default': None},
+    @docval({'name': 'data',        'type': data_type, 'doc': 'predicted class label for each sample', 'default': None},
             {'name': 'name',        'type': str,       'doc': 'the name of this column', 'default': 'predicted_class'},
             {'name': 'description', 'type': str,       'doc': 'a description for this column', 'default': "the predicted class"})
     def add_predicted_class(self, **kwargs):
