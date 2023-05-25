@@ -1,7 +1,6 @@
 from hdmf.utils import docval, popargs
 from hdmf.backends.hdf5 import H5DataIO
-from hdmf.common import get_class, register_class, DynamicTable, ElementIdentifiers
-from hdmf.container import Container
+from hdmf.common import get_class, register_class
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 

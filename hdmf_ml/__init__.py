@@ -1,4 +1,4 @@
-from hdmf.common import load_namespaces, get_class
+from hdmf.common import load_namespaces
 
 
 def __get_resources():
