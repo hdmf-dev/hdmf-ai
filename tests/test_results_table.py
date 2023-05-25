@@ -2,7 +2,7 @@ import os
 import tempfile
 from unittest import TestCase
 
-from hdmf.common import HDF5IO, get_manager, get_hdf5io, EnumData
+from hdmf.common import HDF5IO, get_manager, EnumData
 from hdmf_ml import ResultsTable
 
 import numpy as np

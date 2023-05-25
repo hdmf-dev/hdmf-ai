@@ -79,7 +79,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
         """Add mask of 0, 1, 2 indicating which samples were used for training, validation, and testing."""
         kwargs['enum'] = ['train', 'validate', 'test']
         kwargs['dtype'] = int
-        ret = self.__add_col('TrainValidationTestSplit', **kwargs)
+        return self.__add_col('TrainValidationTestSplit', **kwargs)
 
     @docval({'name': 'data',        'type': data_type, 'doc': 'train-validation-test split data', 'default': None},
             {'name': 'name',        'type': str,       'doc': 'the name of this column', 'default': 'tvt_split'},
