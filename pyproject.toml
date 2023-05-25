@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hdmf_ml"
+authors = [
+  { name="Andrew Tritt", email="ajtritt@lbl.gov" },
+  { name="Ryan Ly", email="rly@lbl.gov" },
+]
+description = "A package for using the HDMF-ML schema"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "BSD-3-Clause"}
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: BSD License",
+    "Development Status :: 2 - Pre-Alpha",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+keywords = [
+    "python",
+    "microbiome",
+    "microbial-taxonomy",
+    "cross-platform",
+    "open-data",
+    "data-format",
+    "open-source",
+    "open-science",
+    "reproducible-research",
+    "machine-learning",
+]
+dependencies = [
+    "hdmf>=3.4.5",
+    "numpy",
+    "scikit-learn>=0.12",
+]
+version = "0.0.1"
+# dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/hdmf-dev/hdmf-ml"
+"Bug Tracker" = "https://github.com/hdmf-dev/hdmf-ml/issues"
+
+[tool.setuptools.package-data]
+hdmf = ["hdmf_ml/schema/*.yaml"]
+
+# [tool.mypy]
+# no_incremental = true  # needed b/c mypy and ruamel.yaml do not play nice. https://github.com/python/mypy/issues/12664
+
+# [tool.interrogate]
+# fail-under = 95
+# verbose = 1
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html"
+norecursedirs = "tests/unit/helpers"
+
+[tool.codespell]
+skip = "htmlcov,.git,.mypy_cache,.pytest_cache,.coverage,*.pdf,*.svg,venvs,.tox,./docs/_build/*,*.ipynb"
+ignore-words-list = "datas"
+
+[tool.coverage.run]
+branch = true
+source = ["hdmf_ml/"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "@abstract"
+]
+
+[tool.setuptools_scm]
+
+# [tool.black]
+# line-length = 120
+# preview = true
+# exclude = ".git|.mypy_cache|.tox|.venv|venv|.ipynb_checkpoints|_build/|dist/|__pypackages__|.ipynb"
+# force-exclude = "docs/gallery"
+
+[tool.ruff]
+select = ["E", "F", "T100", "T201", "T203"]
+exclude = [
+  ".git",
+  ".tox",
+  "__pycache__",
+  "build/",
+  "dist/",
+  "docs/source/conf.py",
+  "docs/source/tutorials/",
+  "docs/_build/",
+]
+line-length = 120
+
+[tool.ruff.mccabe]
+max-complexity = 17
