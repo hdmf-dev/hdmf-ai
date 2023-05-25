@@ -3,9 +3,9 @@ name: Codespell
 
 on:
   push:
-    branches: [dev]
+    branches:
+      - main
   pull_request:
-    branches: [dev]
 
 jobs:
   codespell:
