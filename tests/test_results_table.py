@@ -2,16 +2,24 @@ import os
 import tempfile
 from unittest import TestCase
 
-from hdmf.common import HDF5IO, get_manager, get_hdf5io, EnumData
+from hdmf.common import HDF5IO, get_manager, EnumData
 from hdmf_ml import ResultsTable
 
 import numpy as np
 
 
+def get_temp_filepath():
+    # On Windows, h5py cannot truncate an open file in write mode.
+    # The temp file will be closed before h5py truncates it and will be removed during the tearDown step.
+    temp_file = tempfile.NamedTemporaryFile()
+    temp_file.close()
+    return temp_file.name
+
+
 class ResultsTableTest(TestCase):
 
     def setUp(self):
-        _, self.path = tempfile.mkstemp()
+        self.path = get_temp_filepath()
 
     def tearDown(self):
         if os.path.exists(self.path):

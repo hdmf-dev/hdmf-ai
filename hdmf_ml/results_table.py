@@ -1,7 +1,6 @@
 from hdmf.utils import docval, popargs
 from hdmf.backends.hdf5 import H5DataIO
-from hdmf.common import get_class, register_class, DynamicTable, ElementIdentifiers
-from hdmf.container import Container
+from hdmf.common import get_class, register_class
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
@@ -80,7 +79,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
         """Add mask of 0, 1, 2 indicating which samples were used for training, validation, and testing."""
         kwargs['enum'] = ['train', 'validate', 'test']
         kwargs['dtype'] = int
-        ret = self.__add_col('TrainValidationTestSplit', **kwargs)
+        return self.__add_col('TrainValidationTestSplit', **kwargs)
 
     @docval({'name': 'data',        'type': data_type, 'doc': 'train-validation-test split data', 'default': None},
             {'name': 'name',        'type': str,       'doc': 'the name of this column', 'default': 'tvt_split'},
@@ -121,7 +120,7 @@ class ResultsTable(get_class('ResultsTable', 'hdmf-ml')):
         kwargs['dim2'] = 'n_classes'
         return self.__add_col('ClassProbability', **kwargs)
 
-    @docval({'name': 'data',        'type': data_type, 'doc': 'predicted class lable for each sample', 'default': None},
+    @docval({'name': 'data',        'type': data_type, 'doc': 'predicted class label for each sample', 'default': None},
             {'name': 'name',        'type': str,       'doc': 'the name of this column', 'default': 'predicted_class'},
             {'name': 'description', 'type': str,       'doc': 'a description for this column', 'default': "the predicted class"})
     def add_predicted_class(self, **kwargs):
