@@ -1,4 +1,47 @@
-*.ipynb_checkpoints
-__pycache__
-*.pyc
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+.history
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sphinx documentation
+/docs/_build/
+/docs/build/
+
+# setuptools
+/build/
+/dist/
 *.egg-info
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# shell scripts (e.g. used with fswatch)
+*.sh
+
+# coverage output
+.coverage*
+coverage.xml
+
+
+# tox
+.tox
+
+# vscode
+.vscode/
+
+# mypy
+.mypy_cache/
+
+# DS_Store
+.DS_Store
