@@ -7,7 +7,7 @@ codespell==2.2.6; python_version >= "3.8"
 coverage==7.4.4; python_version >= "3.8"
 pre-commit==3.3.1; python_version >= "3.8"
 pytest==8.1.1; python_version >= "3.8"
-pytest-cov==5.0.0; python_version < "3.8"  # pytest-cov 5 dropped python 3.7 support
+pytest-cov==5.0.0; python_version >= "3.8"
 ruff==0.3.5
 
 black==23.3.0; python_version < "3.8"  # black 24 dropped python 3.7 support
