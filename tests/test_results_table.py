@@ -5,17 +5,16 @@ from unittest import TestCase
 from hdmf.common import HDF5IO, get_manager, EnumData, VectorData
 from hdmf_ml import ResultsTable
 from hdmf_ml.results_table import (
-    ResultsTable,
-    SupervisedOutput,
-    TrainValidationTestSplit,
+    # SupervisedOutput,
+    # TrainValidationTestSplit,
     CrossValidationSplit,
-    ClassProbability,
-    ClassLabel,
-    TopKProbabilities,
-    TopKClasses,
-    RegressionOutput,
-    ClusterLabel,
-    EmbeddedValues,
+    # ClassProbability,
+    # ClassLabel,
+    # TopKProbabilities,
+    # TopKClasses,
+    # RegressionOutput,
+    # ClusterLabel,
+    # EmbeddedValues,
 )
 import numpy as np
 
