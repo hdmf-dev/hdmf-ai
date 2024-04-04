@@ -1,6 +1,6 @@
 from hdmf.utils import docval, popargs
 from hdmf.backends.hdf5 import H5DataIO
-from hdmf.common import get_class, register_class, VectorData
+from hdmf.common import get_class, register_class, VectorData, EnumData
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
@@ -56,7 +56,7 @@ class ResultsTable(_AutoGenResultsTable):
         return self.__n_samples
 
     @docval(
-        {"name": "cls", "type": (str, type), "doc": "class for this column"},
+        {"name": "col_cls", "type": type, "doc": "class for this column"},
         {"name": "data", "type": data_type, "doc": "data for this column"},
         {"name": "name", "type": str, "doc": "the name of this column"},
         {"name": "description", "type": str, "doc": "a description for this column"},
@@ -80,8 +80,8 @@ class ResultsTable(_AutoGenResultsTable):
     )
     def __add_col(self, **kwargs):
         """A helper function to handle boiler-plate code for adding columns to a ResultsTable"""
-        cls, data, name, description, dim2_kwarg, dtype = popargs(
-            "cls", "data", "name", "description", "dim2_kwarg", "dtype", kwargs
+        col_cls, data, name, description, dim2_kwarg, dtype = popargs(
+            "col_cls", "data", "name", "description", "dim2_kwarg", "dtype", kwargs
         )
         # get the size of the other dimension(s) from kwargs
         if dim2_kwarg is not None:
@@ -125,7 +125,7 @@ class ResultsTable(_AutoGenResultsTable):
             )
 
         self.add_column(
-            data=data, name=name, description=description, col_cls=cls, **kwargs
+            data=data, name=name, description=description, col_cls=col_cls, **kwargs
         )
 
         if self.__n_samples is None:
@@ -211,6 +211,7 @@ class ResultsTable(_AutoGenResultsTable):
             enc = LabelEncoder()
             kwargs["data"] = np.uint(enc.fit_transform(kwargs["data"]))
             kwargs["enum"] = enc.classes_
+            return self.__add_col(EnumData, **kwargs)
         kwargs["dtype"] = int
         return self.__add_col(VectorData, **kwargs)
 

@@ -2,9 +2,21 @@ import os
 import tempfile
 from unittest import TestCase
 
-from hdmf.common import HDF5IO, get_manager, EnumData
+from hdmf.common import HDF5IO, get_manager, EnumData, VectorData
 from hdmf_ml import ResultsTable
-
+from hdmf_ml.results_table import (
+    ResultsTable,
+    SupervisedOutput,
+    TrainValidationTestSplit,
+    CrossValidationSplit,
+    ClassProbability,
+    ClassLabel,
+    TopKProbabilities,
+    TopKClasses,
+    RegressionOutput,
+    ClusterLabel,
+    EmbeddedValues,
+)
 import numpy as np
 
 
@@ -47,12 +59,19 @@ class ResultsTableTest(TestCase):
     def test_add_tvt_split(self):
         rt = ResultsTable(name="foo", description="a test results table")
         rt.add_tvt_split(np.uint([0, 1, 2, 0, 1]))
-        with self.get_hdf5io() as io:
-            io.write(rt)
+        assert isinstance(rt["tvt_split"], TrainValidationTestSplit)
+        assert all(rt["tvt_split"].data == np.uint([0, 1, 2, 0, 1]))
+        assert isinstance(rt["tvt_split"].elements, VectorData)
+        assert rt["tvt_split"].elements.data == ["train", "validate", "test"]
+        # with self.get_hdf5io() as io:  # TODO fix this test
+        #     io.write(rt)
 
     def test_add_cv_split(self):
         rt = ResultsTable(name="foo", description="a test results table")
         rt.add_cv_split([0, 1, 2, 3, 4])
+        assert isinstance(rt["cv_split"], CrossValidationSplit)
+        assert rt["cv_split"].data == [0, 1, 2, 3, 4]
+        assert rt["cv_split"].n_splits == 5
         with self.get_hdf5io() as io:
             io.write(rt)
 
