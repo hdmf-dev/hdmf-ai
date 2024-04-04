@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-coverage:
-    name: ${{ matrix.os }}, opt reqs ${{ matrix.opt_req }}
+    name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     # TODO handle forks
     # run pipeline on either a push event or a PR event on a fork
@@ -16,32 +16,27 @@ jobs:
     defaults:
       run:
         shell: bash
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.os }}
+      cancel-in-progress: true
     strategy:
       matrix:
         include:
-          - { os: ubuntu-latest , opt_req: true }
-          - { os: ubuntu-latest , opt_req: false }
-          - { os: windows-latest, opt_req: false }
-          - { os: macos-latest  , opt_req: false }
+          - { os: ubuntu-latest,  python-ver: "3.12" }
+          - { os: ubuntu-latest,  python-ver: "3.8" }
+          - { os: windows-latest, python-ver: "3.12" }
+          - { os: macos-latest,   python-ver: "3.12" }
     env:  # used by codecov-action
       OS: ${{ matrix.os }}
-      PYTHON: '3.11'
+      PYTHON: ${{ matrix.python-ver }}
     steps:
-      - name: Cancel non-latest runs
-        uses: styfle/cancel-workflow-action@0.11.0
-        with:
-          all_but_latest: true
-          access_token: ${{ github.token }}
-
-      - uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-          fetch-depth: 0  # tags are required for versioneer to determine the version
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON }}
+          python-version: ${{ matrix.python-ver }}
 
       - name: Install dependencies
         run: |
@@ -60,6 +55,6 @@ jobs:
           python -m coverage report -m
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
