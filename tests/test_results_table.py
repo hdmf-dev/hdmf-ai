@@ -39,14 +39,14 @@ class ResultsTableTest(TestCase):
 
     def test_add_col_dupe_name(self):
         rt = ResultsTable(name="foo", description="a test results table")
-        rt.add_tvt_split([0, 1, 2, 0, 1])
+        rt.add_tvt_split(np.uint([0, 1, 2, 0, 1]))
         msg = "Column 'tvt_split' already exists in ResultsTable 'foo'"
         with self.assertRaisesRegex(ValueError, msg):
-            rt.add_tvt_split([0, 1, 2, 0, 1])
+            rt.add_tvt_split(np.uint([0, 1, 2, 0, 1]))
 
     def test_add_tvt_split(self):
         rt = ResultsTable(name="foo", description="a test results table")
-        rt.add_tvt_split([0, 1, 2, 0, 1])
+        rt.add_tvt_split(np.uint([0, 1, 2, 0, 1]))
         with self.get_hdf5io() as io:
             io.write(rt)
 
