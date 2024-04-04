@@ -41,10 +41,7 @@ class ResultsTableTest(TestCase):
     def test_add_col_diff_len(self):
         rt = ResultsTable(name="foo", description="a test results table")
         rt.add_tvt_split([0, 1, 2, 0, 1])
-        msg = (
-            "New column true_label of length 4 is not the same length as "
-            "existings columns of length 5"
-        )
+        msg = "New column true_label of length 4 is not the same length as " "existings columns of length 5"
         with self.assertRaisesRegex(ValueError, msg):
             rt.add_true_label([0, 0, 0, 1])
 
@@ -78,9 +75,7 @@ class ResultsTableTest(TestCase):
 
     def test_add_cv_split_bad_splits(self):
         rt = ResultsTable(name="foo", description="a test results table")
-        with self.assertRaisesRegex(
-            ValueError, "Got non-integer data for cross-validation split"
-        ):
+        with self.assertRaisesRegex(ValueError, "Got non-integer data for cross-validation split"):
             rt.add_cv_split([0.0, 0.1, 0.2, 0.3, 0.4])
 
     def test_add_true_label(self):
@@ -99,9 +94,7 @@ class ResultsTableTest(TestCase):
 
     def test_add_predicted_probability(self):
         rt = ResultsTable(name="foo", description="a test results table")
-        rt.add_predicted_probability(
-            [[0.1, 0.9], [0.2, 0.8], [0.3, 0.7], [0.4, 0.6], [0.5, 0.5]]
-        )
+        rt.add_predicted_probability([[0.1, 0.9], [0.2, 0.8], [0.3, 0.7], [0.4, 0.6], [0.5, 0.5]])
         with self.get_hdf5io() as io:
             io.write(rt)
 
@@ -137,8 +130,6 @@ class ResultsTableTest(TestCase):
 
     def test_add_topk_probabilities(self):
         rt = ResultsTable(name="foo", description="a test results table")
-        rt.add_topk_probabilities(
-            [[0.9, 0.1], [0.8, 0.2], [0.7, 0.3], [0.6, 0.4], [0.5, 0.5]]
-        )
+        rt.add_topk_probabilities([[0.9, 0.1], [0.8, 0.2], [0.7, 0.3], [0.6, 0.4], [0.5, 0.5]])
         with self.get_hdf5io() as io:
             io.write(rt)

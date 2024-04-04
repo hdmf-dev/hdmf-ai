@@ -13,9 +13,7 @@ def __get_resources():
     __schema_dir = "schema"
 
     ret = dict()
-    ret["namespace_path"] = str(
-        __location_of_this_file / __schema_dir / __core_ns_file_name
-    )
+    ret["namespace_path"] = str(__location_of_this_file / __schema_dir / __core_ns_file_name)
     return ret
 
 

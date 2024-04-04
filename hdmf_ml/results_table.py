@@ -105,17 +105,13 @@ class ResultsTable(_AutoGenResultsTable):
                     # dim2 is a 1D array, so shape is N-D
                     shape = (self.n_samples, *dim2)
                 else:
-                    ValueError(
-                        f"Unrecognized type for dim2: {type(dim2)} - expected integer or 1-D array-like"
-                    )
+                    ValueError(f"Unrecognized type for dim2: {type(dim2)} - expected integer or 1-D array-like")
 
             # create empty DataIO object
             data = H5DataIO(shape=shape, dtype=dtype)
 
         if name in self:
-            raise ValueError(
-                f"Column '{name}' already exists in ResultsTable '{self.name}'"
-            )
+            raise ValueError(f"Column '{name}' already exists in ResultsTable '{self.name}'")
         if len(self.id) == 0:
             self.id.extend(np.arange(len(data)))
         elif len(self.id) != len(data):
@@ -124,9 +120,7 @@ class ResultsTable(_AutoGenResultsTable):
                 f"existings columns of length {len(self.id)}"
             )
 
-        self.add_column(
-            data=data, name=name, description=description, col_cls=col_cls, **kwargs
-        )
+        self.add_column(data=data, name=name, description=description, col_cls=col_cls, **kwargs)
 
         if self.__n_samples is None:
             self.__n_samples = len(data)
