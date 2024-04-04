@@ -5,8 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hdmf_ml"
 authors = [
-  { name="Andrew Tritt", email="ajtritt@lbl.gov" },
   { name="Ryan Ly", email="rly@lbl.gov" },
+  { name="Andrew Tritt", email="ajtritt@lbl.gov" },
 ]
 description = "A package for using the HDMF-ML schema"
 readme = "README.md"
@@ -19,8 +19,9 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: BSD License",
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     "Operating System :: OS Independent",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
@@ -28,8 +29,6 @@ classifiers = [
 ]
 keywords = [
     "python",
-    "microbiome",
-    "microbial-taxonomy",
     "cross-platform",
     "open-data",
     "data-format",
@@ -40,8 +39,8 @@ keywords = [
 ]
 dependencies = [
     "hdmf>=3.5.1",
+    "numpy>=1.21",
     "scikit-learn>=1",
-    "numpy>=1.21"
 ]
 version = "0.1.0"
 # dynamic = ["version"]

@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-tests:
-    name: Run tests on ${{ matrix.os }}
+    name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -20,11 +20,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { name: linux-python3.8-minimum    , requirements: minimum,  python-ver: "3.8" , os: ubuntu-latest }
+          - { name: linux-python3.7-minimum    , requirements: minimum,  python-ver: "3.7" , os: ubuntu-latest }
           - { name: linux-python3.12           , requirements: pinned ,  python-ver: "3.12", os: ubuntu-latest }
-          - { name: windows-python3.8-minimum  , requirements: minimum,  python-ver: "3.8" , os: windows-latest }
+          - { name: windows-python3.7-minimum  , requirements: minimum,  python-ver: "3.7" , os: windows-latest }
           - { name: windows-python3.12         , requirements: pinned ,  python-ver: "3.12", os: windows-latest }
-          - { name: macos-python3.8-minimum    , requirements: minimum,  python-ver: "3.8" , os: macos-latest }
+          - { name: macos-python3.7-minimum    , requirements: minimum,  python-ver: "3.7" , os: macos-latest }
           - { name: macos-python3.12           , requirements: pinned ,  python-ver: "3.12", os: macos-latest }
     steps:
       - name: Checkout repo
