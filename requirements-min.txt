@@ -1,3 +1,4 @@
+# minimum versions of package dependencies for installing HDMF-ML, used in testing
 hdmf==3.5.1
 numpy==1.21
 scikit-learn==1.0
