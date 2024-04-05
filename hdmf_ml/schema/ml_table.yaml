@@ -33,7 +33,7 @@ datasets:
 - data_type_def: ClassLabel
   data_type_inc: SupervisedOutput
   doc: A column to store which class a sample was classified as
-  dtype: int
+  dtype: uint
   attributes:
   - name: probabilities
     dtype:
@@ -82,8 +82,33 @@ datasets:
 groups:
 - data_type_def: ResultsTable
   data_type_inc: DynamicTable
-  doc: A table for storing sequence data
+  doc: A table for storing ML results
+  attributes:
+  - name: source_code
+    dtype: text
+    doc: A link to the code used to generate the results, e.g., on GitHub.
+    required: false
+  - name: parameters
+    dtype: text
+    doc: A JSON repreesentation of the parameters used to generate the results.
+    required: false
+  - name: model_description
+    dtype: text
+    doc: A description of the model used to generate the results. The string output of a PyTorch model can be stored
+      here. Individual elements of the text string can be annotated with AI ontologies using the HDMF HERD feature.
+    required: false
+  - name: pre_trained_model
+    dtype: text
+    doc: A description of the model used to generate the results. It is recommended a link to a model shared
+      on a public model repository, e.g., HuggingFace Model Hub. It is also recommended to use the HDMF HERD
+      feature to annotate the string with a DOI or other persistent identifier.
+    required: false
+
   datasets:
+  - name: samples
+    data_type_inc: DynamicTableRegion
+    doc: A selection of rows from another DynamicTable that represent the input to the ML algorithm
+    quantity: '?'
   - name: tvt_split_elements
     data_type_inc: VectorData
     doc: Fixed set of elements referenced by tvt_split EnumData column.

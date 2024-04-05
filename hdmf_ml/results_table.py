@@ -1,6 +1,6 @@
-from hdmf.utils import docval, popargs
+from hdmf.utils import docval, popargs, get_docval
 from hdmf.backends.hdf5 import H5DataIO
-from hdmf.common import get_class, register_class, VectorData, EnumData
+from hdmf.common import get_class, register_class, VectorData, EnumData, DynamicTable, DynamicTableRegion
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
@@ -44,6 +44,7 @@ class ResultsTable(_AutoGenResultsTable):
             "doc": "the number of samples in this table",
             "default": None,
         },
+        *get_docval(_AutoGenResultsTable.__init__, "id", "columns", "colnames", "target_tables"),
         allow_extra=True,
     )
     def __init__(self, **kwargs):
@@ -54,6 +55,35 @@ class ResultsTable(_AutoGenResultsTable):
     @property
     def n_samples(self):
         return self.__n_samples
+
+    @docval(
+        {
+            "name": "data",
+            "type": data_type,
+            "doc": "row indices of the samples used in the machine learning algorithm",
+            "default": None,
+        },
+        {
+            "name": "description",
+            "type": str,
+            "doc": "a description for this column",
+            "default": None,
+        },
+        {
+            "name": "table",
+            "type": DynamicTable,
+            "doc": "the referenced table",
+            "default": None,
+        }
+    )
+    def add_samples(self, **kwargs):
+        data, description, table = popargs("data", "description", "table", kwargs)
+        self.add_column(name="samples", data=data, description=description, col_cls=DynamicTableRegion, table=table, **kwargs)
+
+        if self.__n_samples is None:
+            self.__n_samples = len(data)
+        return self["samples"]
+
 
     @docval(
         {"name": "col_cls", "type": type, "doc": "class for this column"},
@@ -204,6 +234,7 @@ class ResultsTable(_AutoGenResultsTable):
             # if data are strings, convert to enum data type (data are ints, enum elements are strings)
             enc = LabelEncoder()
             kwargs["data"] = np.uint(enc.fit_transform(kwargs["data"]))
+            kwargs["dtype"] = np.uint
             kwargs["enum"] = enc.classes_
             return self.__add_col(EnumData, **kwargs)
         kwargs["dtype"] = int
@@ -255,7 +286,7 @@ class ResultsTable(_AutoGenResultsTable):
     def add_predicted_class(self, **kwargs):
         """Add predicted class label (int) for each sample"""
         kwargs["name"] = "predicted_class"
-        kwargs["dtype"] = int
+        kwargs["dtype"] = np.uint
         return self.__add_col(ClassLabel, **kwargs)
 
     @docval(
