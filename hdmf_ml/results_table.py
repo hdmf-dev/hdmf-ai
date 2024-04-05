@@ -78,7 +78,14 @@ class ResultsTable(_AutoGenResultsTable):
     )
     def add_samples(self, **kwargs):
         data, description, table = popargs("data", "description", "table", kwargs)
-        self.add_column(name="samples", data=data, description=description, col_cls=DynamicTableRegion, table=table, **kwargs)
+        self.add_column(
+            name="samples",
+            data=data,
+            description=description,
+            col_cls=DynamicTableRegion,
+            table=table,
+            **kwargs
+        )
 
         if self.__n_samples is None:
             self.__n_samples = len(data)
