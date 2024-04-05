@@ -1,6 +1,6 @@
 namespaces:
 - name: hdmf-ml
-  doc: An extension to HDMF for storing data to be using for machine learning
+  doc: An extension to HDMF for storing results of machine learning algorithms
   author:
   - Andrew Tritt
   - Ryan Ly
@@ -14,4 +14,4 @@ namespaces:
   - doc: structures for storing ML data in a tabular fashion
     source: ml_table.yaml
     title: Machine learning table
-  version: 0.0.1
+  version: 0.1.0

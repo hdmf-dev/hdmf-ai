@@ -17,8 +17,9 @@ datasets:
   doc: A column for storing which part of the ML workflow a sample was used in
 
 - data_type_def: CrossValidationSplit
-  data_type_inc: EnumData
+  data_type_inc: VectorData
   doc: A column for storing which cross validation split a sample is part of
+  dtype: int
   attributes:
   - name: n_splits
     dtype: int
@@ -66,7 +67,7 @@ datasets:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the true_label column if present
+    doc: The training labels that were used. Reference the `true_label` column if present
       in the same ResultsTable.
 
 - data_type_def: EmbeddedValues
@@ -99,7 +100,7 @@ groups:
   - name: true_label
     data_type_inc: VectorData
     doc: A column to store the true labels for each sample. To store labels as strings, use EnumData.
-      The training_labels attribute on other columns in the ResultsTable should reference this column
+      The `training_labels` attribute on other columns in the ResultsTable should reference this column,
       if present.
     quantity: '?'
   - name: predicted_probability
