@@ -81,7 +81,7 @@ nwbfile.add_analysis(results_table)
 
 # store metadata about the model
 # NOTE: not the actual model, just a placeholder for demonstration purposes
-results_table.pre_trained_model = "Bloom v1.3"
+results_table.pre_trained_model = ["Bloom v1.3"]
 # annotate the model with a DOI using HDMF HERD
 herd = HERD()
 herd.add_ref(

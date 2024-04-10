@@ -86,22 +86,42 @@ groups:
   attributes:
   - name: source_code
     dtype: text
-    doc: A link to the code used to generate the results, e.g., on GitHub.
+    doc: A link to the code used to generate the results, e.g., on GitHub. If multiple, links should be in order
+      of execution.
+    shape:
+    - null
+    dims:
+    - num_steps
     required: false
   - name: parameters
     dtype: text
-    doc: A JSON repreesentation of the parameters used to generate the results.
+    doc: A JSON representation of the parameters used to generate the results. If multiple scripts/models were run,
+      each element of the list should correspond to the elements in `source_code`.
+    shape:
+    - null
+    dims:
+    - num_steps
     required: false
   - name: model_description
     dtype: text
     doc: A description of the model used to generate the results. The string output of a PyTorch model can be stored
       here. Individual elements of the text string can be annotated with AI ontologies using the HDMF HERD feature.
+      If multiple, descriptions should be in order of execution.
+    shape:
+    - null
+    dims:
+    - num_steps
     required: false
   - name: pre_trained_model
     dtype: text
     doc: A description of the model used to generate the results. It is recommended a link to a model shared
       on a public model repository, e.g., HuggingFace Model Hub. It is also recommended to use the HDMF HERD
-      feature to annotate the string with a DOI or other persistent identifier.
+      feature to annotate the string with a DOI or other persistent identifier. If multiple, descriptions should
+      be in order of execution.
+    shape:
+    - null
+    dims:
+    - num_steps
     required: false
 
   datasets:
