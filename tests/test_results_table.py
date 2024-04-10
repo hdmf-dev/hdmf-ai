@@ -3,8 +3,8 @@ import tempfile
 from unittest import TestCase
 
 from hdmf.common import HDF5IO, get_manager, EnumData, VectorData
-from hdmf_ml import ResultsTable
-from hdmf_ml.results_table import (
+from hdmf_ai import ResultsTable
+from hdmf_ai.results_table import (
     # SupervisedOutput,
     # TrainValidationTestSplit,
     CrossValidationSplit,

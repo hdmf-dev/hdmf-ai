@@ -17,7 +17,7 @@ def __get_resources():
     return ret
 
 
-CORE_NAMESPACE = "hdmf-ml"
+CORE_NAMESPACE = "hdmf-ai"
 load_namespaces(__get_resources()["namespace_path"])
 
 from . import results_table

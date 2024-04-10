@@ -7,21 +7,21 @@ from sklearn.preprocessing import LabelEncoder
 
 data_type = ("array_data", "data")
 
-SupervisedOutput = get_class("SupervisedOutput", "hdmf-ml")
-TrainValidationTestSplit = get_class("TrainValidationTestSplit", "hdmf-ml")
-CrossValidationSplit = get_class("CrossValidationSplit", "hdmf-ml")
-ClassProbability = get_class("ClassProbability", "hdmf-ml")
-ClassLabel = get_class("ClassLabel", "hdmf-ml")
-TopKProbabilities = get_class("TopKProbabilities", "hdmf-ml")
-TopKClasses = get_class("TopKClasses", "hdmf-ml")
-RegressionOutput = get_class("RegressionOutput", "hdmf-ml")
-ClusterLabel = get_class("ClusterLabel", "hdmf-ml")
-EmbeddedValues = get_class("EmbeddedValues", "hdmf-ml")
+SupervisedOutput = get_class("SupervisedOutput", "hdmf-ai")
+TrainValidationTestSplit = get_class("TrainValidationTestSplit", "hdmf-ai")
+CrossValidationSplit = get_class("CrossValidationSplit", "hdmf-ai")
+ClassProbability = get_class("ClassProbability", "hdmf-ai")
+ClassLabel = get_class("ClassLabel", "hdmf-ai")
+TopKProbabilities = get_class("TopKProbabilities", "hdmf-ai")
+TopKClasses = get_class("TopKClasses", "hdmf-ai")
+RegressionOutput = get_class("RegressionOutput", "hdmf-ai")
+ClusterLabel = get_class("ClusterLabel", "hdmf-ai")
+EmbeddedValues = get_class("EmbeddedValues", "hdmf-ai")
 
-_AutoGenResultsTable = get_class("ResultsTable", "hdmf-ml")
+_AutoGenResultsTable = get_class("ResultsTable", "hdmf-ai")
 
 
-@register_class("ResultsTable", "hdmf-ml")
+@register_class("ResultsTable", "hdmf-ai")
 class ResultsTable(_AutoGenResultsTable):
     # extend the auto-generated ResultsTable class
 

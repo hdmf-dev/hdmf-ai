@@ -3,12 +3,12 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hdmf_ml"
+name = "hdmf_ai"
 authors = [
   { name="Ryan Ly", email="rly@lbl.gov" },
   { name="Andrew Tritt", email="ajtritt@lbl.gov" },
 ]
-description = "A package for using the HDMF-ML schema"
+description = "A package for using the HDMF-AI schema"
 readme = "README.md"
 requires-python = ">=3.7"
 license = {text = "BSD-3-Clause"}
@@ -42,15 +42,15 @@ dependencies = [
     "numpy>=1.21",
     "scikit-learn>=1",
 ]
-version = "0.1.0"
+version = "1.0.0"
 # dynamic = ["version"]
 
 [project.urls]
-"Homepage" = "https://github.com/hdmf-dev/hdmf-ml"
-"Bug Tracker" = "https://github.com/hdmf-dev/hdmf-ml/issues"
+"Homepage" = "https://github.com/hdmf-dev/hdmf-ai"
+"Bug Tracker" = "https://github.com/hdmf-dev/hdmf-ai/issues"
 
 [tool.setuptools.package-data]
-hdmf = ["hdmf_ml/schema/*.yaml"]
+hdmf = ["src/hdmf_ai/schema/*.yaml"]
 
 # [tool.mypy]
 # no_incremental = true  # needed b/c mypy and ruamel.yaml do not play nice. https://github.com/python/mypy/issues/12664
@@ -69,7 +69,7 @@ ignore-words-list = "datas"
 
 [tool.coverage.run]
 branch = true
-source = ["hdmf_ml/"]
+source = ["src/hdmf_ai/"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -102,7 +102,7 @@ exclude = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"hdmf_ml/__init__.py" = ["E402", "F401"]
+"src/hdmf_ai/__init__.py" = ["E402", "F401"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 17
