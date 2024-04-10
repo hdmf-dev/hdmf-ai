@@ -49,7 +49,7 @@ datasets:
 
 - data_type_def: TopKClasses
   data_type_inc: SupervisedOutput
-  dtype: int
+  dtype: uint
   doc: A column for storing the top k classes, used for top-k accuracy calculation.
 
 - data_type_def: RegressionOutput
