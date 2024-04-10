@@ -1,3 +1,3 @@
-# HDMF-ML - an HDMF schema for machine learning workflows
+# HDMF-AI - an HDMF schema and API for AI/ML workflows
 
-![Endurable Schema](schema.png)
+![Schema](schema.png)

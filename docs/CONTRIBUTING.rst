@@ -6,7 +6,7 @@ Contributing Guide
 Code of Conduct
 ---------------
 
-This project and everyone participating in it is governed by our `code of conduct guidelines <https://github.com/hdmf-dev/hdmf-ml/blob/main/.github/CODE_OF_CONDUCT.md>`_. By participating, you are expected to uphold this code. Please report unacceptable behavior.
+This project and everyone participating in it is governed by our `code of conduct guidelines <https://github.com/hdmf-dev/hdmf-ai/blob/main/.github/CODE_OF_CONDUCT.md>`_. By participating, you are expected to uphold this code. Please report unacceptable behavior.
 
 .. _sec-contribution-types:
 
@@ -16,9 +16,9 @@ Types of Contributions
 Did you find a bug? or Do you intend to add a new feature or change an existing one?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Submit issues and requests** using our `issue tracker <https://github.com/hdmf-dev/hdmf-ml/issues>`_
+* **Submit issues and requests** using our `issue tracker <https://github.com/hdmf-dev/hdmf-ai/issues>`_
 
-* **Ensure the feature or change was not already reported** by searching on GitHub under `HDMF Issues <https://github.com/hdmf-dev/hdmf-ml/issues>`_
+* **Ensure the feature or change was not already reported** by searching on GitHub under `HDMF Issues <https://github.com/hdmf-dev/hdmf-ai/issues>`_
 
 * If you are unable to find an open issue addressing the problem then open a new issue on the respective repository. Be sure to use our issue templates and include:
 
@@ -73,7 +73,7 @@ From your local copy directory, use the following commands.
 
     $ git push origin <new_branch>
 
-4) Once you have tested and finalized your changes, create a pull request targeting ``dev`` as the base branch. Be sure to use our `pull request template <https://github.com/hdmf-dev/hdmf-ml/blob/main/.github/pull_request_template.md>`_ and:
+4) Once you have tested and finalized your changes, create a pull request targeting ``dev`` as the base branch. Be sure to use our `pull request template <https://github.com/hdmf-dev/hdmf-ai/blob/main/.github/pull_request_template.md>`_ and:
 
     * Ensure the PR description clearly describes the problem and solution.
     * Include the relevant issue number if applicable.
@@ -139,7 +139,7 @@ Please do not take working with an organization (e.g., during a hackathon or via
 License and Copyright
 ---------------------
 
-See the `license <https://raw.githubusercontent.com/hdmf-dev/hdmf-ml/main/license.txt>`_ files for details about the copyright and license.
+See the `license <https://raw.githubusercontent.com/hdmf-dev/hdmf-ai/main/license.txt>`_ files for details about the copyright and license.
 
 As indicated in the HDMF license: *“You are under no obligation whatsoever to provide any bug fixes, patches, or upgrades to the features, functionality or performance of the source code ("Enhancements") to anyone; however, if you choose to make your Enhancements available either publicly, or directly to Lawrence Berkeley National Laboratory, without imposing a separate written license agreement for such Enhancements, then you hereby grant the following license: a non-exclusive, royalty-free perpetual license to install, use, modify, prepare derivative works, incorporate into other computer software, distribute, and sublicense such enhancements or derivative works thereof, in binary and source code form.”*
 

@@ -1,4 +1,4 @@
-# pinned dependencies to reproduce an entire development environment to use HDMF-ML, run HDMF-ML tests, check code
+# pinned dependencies to reproduce an entire development environment to use HDMF-AI, run HDMF-AI tests, check code
 # style, compute coverage, and create test environments. note that depending on the version of python installed,
 # different versions of requirements may be installed due to package incompatibilities.
 
