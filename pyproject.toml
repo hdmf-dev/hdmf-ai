@@ -103,6 +103,7 @@ exclude = [
 
 [tool.ruff.lint.per-file-ignores]
 "src/hdmf_ai/__init__.py" = ["E402", "F401"]
+"example.py" = ["E501", "T201"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 17
