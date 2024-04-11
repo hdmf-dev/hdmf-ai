@@ -9,6 +9,7 @@ tags:
   - deep learning
   - scientific data
   - scientific machine learning
+  - reproducible research
 
 authors:
   - name: Ryan Ly
