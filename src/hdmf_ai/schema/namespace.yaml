@@ -1,6 +1,6 @@
 namespaces:
 - name: hdmf-ai
-  doc: An extension to HDMF for storing results of AI/ML algorithms
+  doc: An extension to HDMF for storing results from AI/ML workflows.
   author:
   - Ryan Ly
   - Andrew Tritt
@@ -11,7 +11,7 @@ namespaces:
   schema:
   - namespace: hdmf-common
   - namespace: hdmf-experimental
-  - doc: Structures for storing AI/ML data in a tabular fashion
+  - doc: Structures for storing AI/ML data in a tabular fashion.
     source: results_table.yaml
-    title: Types for results table and specialized columns
+    title: Types for results table and specialized columns.
   version: 1.0.0
