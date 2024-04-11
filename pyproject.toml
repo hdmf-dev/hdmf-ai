@@ -8,10 +8,10 @@ authors = [
   { name="Ryan Ly", email="rly@lbl.gov" },
   { name="Andrew Tritt", email="ajtritt@lbl.gov" },
 ]
-description = "A package for using the HDMF-AI schema"
+description = "A schema and API for storing the results from AI/ML workflows"
 readme = "README.md"
 requires-python = ">=3.7"
-license = {text = "BSD-3-Clause"}
+license = {text = "BSD-3-Clause-LBNL"}
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.7",
@@ -35,7 +35,9 @@ keywords = [
     "open-source",
     "open-science",
     "reproducible-research",
+    "artificial-intelligence",
     "machine-learning",
+    "data-standards",
 ]
 dependencies = [
     "hdmf>=3.5.1",
