@@ -2,37 +2,38 @@
 datasets:
 - data_type_def: SupervisedOutput
   data_type_inc: VectorData
-  doc: A column to store supervised learning output
+  doc: A column to store supervised learning output. Use specialized subtypes for classification and regression.
   attributes:
   - name: training_labels
     dtype:
       reftype: object
       target_type: VectorData
     required: false
-    doc: The training labels that were used. Reference the true_label column if present
-      in the same ResultsTable.
+    doc: The training labels that were used. Reference the `true_label` column if present
+      in the same `ResultsTable`.
 
-- data_type_def: TrainValidationTestSplit
+- data_type_def: TrainValidateTestSplit
   data_type_inc: EnumData
-  doc: A column for storing which part of the ML workflow a sample was used in
+  doc: A column for storing which part of the ML workflow a sample was used in. Values should be
+    'train', 'validate', and 'test'.
 
 - data_type_def: CrossValidationSplit
   data_type_inc: VectorData
-  doc: A column for storing which cross validation split a sample is part of
+  doc: A column for storing which cross validation split a sample is part of, starting from 0.
   dtype: int
   attributes:
   - name: n_splits
     dtype: int
-    doc: The number of cross-validation splits used
+    doc: The number of cross-validation splits used.
 
 - data_type_def: ClassProbability
   data_type_inc: SupervisedOutput
   dtype: float
-  doc: A column for storing the class probability for each class across the samples
+  doc: A column for storing the class probability for each class across the samples.
 
 - data_type_def: ClassLabel
   data_type_inc: SupervisedOutput
-  doc: A column to store which class a sample was classified as
+  doc: A column to store which class a sample was classified as.
   dtype: uint
   attributes:
   - name: probabilities
@@ -40,26 +41,35 @@ datasets:
       reftype: object
       target_type: ClassProbability
     required: false
-    doc: The class probabilities from which these class labels were determined
+    doc: The class probabilities from which these class labels were determined. Reference the `predicted_probability`
+      column if present in the same ResultsTable.
 
 - data_type_def: TopKProbabilities
   data_type_inc: SupervisedOutput
-  dtype: float
   doc: A column for storing the top k class probabilities. Probabilities should be ordered in descending order.
+  dtype: float
 
 - data_type_def: TopKClasses
   data_type_inc: SupervisedOutput
-  dtype: uint
   doc: A column for storing the top k classes, used for top-k accuracy calculation.
+  dtype: uint
+  attributes:
+  - name: probabilities
+    dtype:
+      reftype: object
+      target_type: TopKProbabilities
+    required: false
+    doc: The class probabilities from which these class labels were determined. Reference the `topk_probabilities`
+      column if present in the same ResultsTable.
 
 - data_type_def: RegressionOutput
   data_type_inc: SupervisedOutput
-  doc: A column to store regression outputs for each sample
+  doc: A column to store regression outputs for each sample.
   dtype: float
 
 - data_type_def: ClusterLabel
   data_type_inc: VectorData
-  doc: A column to store which cluster a sample was clustered into
+  doc: A column to store which cluster a sample was clustered into.
   dtype: int
   attributes:
   - name: training_labels
@@ -72,7 +82,7 @@ datasets:
 
 - data_type_def: EmbeddedValues
   data_type_inc: VectorData
-  doc: A column to store embeddings for each sample
+  doc: A column to store embeddings, e.g., from dimensionality reduction, for each sample.
   dtype: float
   dims:
   - ndims
@@ -82,7 +92,7 @@ datasets:
 groups:
 - data_type_def: ResultsTable
   data_type_inc: DynamicTable
-  doc: A table for storing ML results
+  doc: A table for storing results from AI/ML workflows.
   attributes:
   - name: source_code
     dtype: text
@@ -123,24 +133,23 @@ groups:
     dims:
     - num_steps
     required: false
-
   datasets:
   - name: samples
     data_type_inc: DynamicTableRegion
-    doc: A selection of rows from another DynamicTable that represent the input to the ML algorithm
+    doc: A selection of rows from another DynamicTable that represent the input to the AI/ML algorithm.
     quantity: '?'
   - name: tvt_split_elements
     data_type_inc: VectorData
-    doc: Fixed set of elements referenced by tvt_split EnumData column.
-      Usually has values 'train', 'validate', 'test'
+    doc: Fixed set of elements referenced by `tvt_split` TrainValidateTestSplit (EnumData) column.
+      Usually has values 'train', 'validate', 'test'.
     quantity: '?'
   - name: tvt_split
-    data_type_inc: TrainValidationTestSplit
-    doc: A column to indicate if a sample was used for training, testing or validation
+    data_type_inc: TrainValidateTestSplit
+    doc: A column to indicate if a sample was used for training, validation, or testing.
     quantity: '?'
   - name: cv_split
     data_type_inc: CrossValidationSplit
-    doc: A column to indicate which cross-validation fold a sample was part of
+    doc: A column for storing which cross validation split a sample is part of, starting from 0.
     quantity: '?'
   - name: true_label
     data_type_inc: VectorData
@@ -150,29 +159,30 @@ groups:
     quantity: '?'
   - name: predicted_probability
     data_type_inc: ClassProbability
-    doc: A column to store the class probability for each class across the samples
+    doc: A column to store the class probability for each class across the samples.
     quantity: '?'
   - name: predicted_class
     data_type_inc: ClassLabel
-    doc: A column to store which class a sample was classified as
-    quantity: '?'
-  - name: predicted_value
-    data_type_inc: RegressionOutput
-    doc: A column to store regression outputs for each sample
-    quantity: '?'
-  - name: cluster_label
-    data_type_inc: ClusterLabel
-    doc: A column to store which cluster a sample was clustered into
-    quantity: '?'
-  - name: embedding
-    data_type_inc: EmbeddedValues
-    doc: A column to store embeddings for each sample
-    quantity: '?'
-  - name: topk_classes
-    data_type_inc: TopKClasses
-    doc: A column to store the top k classes
+    doc: A column to store which class a sample was classified as.
     quantity: '?'
   - name: topk_probabilities
     data_type_inc: TopKProbabilities
-    doc: A column to store the top k probabilities
+    doc: A column to store the probabilities for the top k predicted classes.
     quantity: '?'
+  - name: topk_classes
+    data_type_inc: TopKClasses
+    doc: A column to store the top k classes.
+    quantity: '?'
+  - name: predicted_value
+    data_type_inc: RegressionOutput
+    doc: A column to store regression outputs for each sample.
+    quantity: '?'
+  - name: cluster_label
+    data_type_inc: ClusterLabel
+    doc: A column to store which cluster a sample was clustered into.
+    quantity: '?'
+  - name: embedding
+    data_type_inc: EmbeddedValues
+    doc: A column to store embeddings, e.g., from dimensionality reduction, for each sample.
+    quantity: '?'
+

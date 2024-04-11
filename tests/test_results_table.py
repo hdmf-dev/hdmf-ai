@@ -55,14 +55,14 @@ class ResultsTableTest(TestCase):
     def test_add_tvt_split(self):
         rt = ResultsTable(name="foo", description="a test results table")
         rt.add_tvt_split(np.uint([0, 1, 2, 0, 1]))
-        # waiting on fix upstream https://github.com/hdmf-dev/hdmf/pull/1091
+        # TODO waiting on fix upstream https://github.com/hdmf-dev/hdmf/pull/1091
         # assert isinstance(rt["tvt_split"], TrainValidationTestSplit)
         assert isinstance(rt["tvt_split"], EnumData)
         assert all(rt["tvt_split"].data == np.uint([0, 1, 2, 0, 1]))
         assert isinstance(rt["tvt_split"].elements, VectorData)
         assert rt["tvt_split"].elements.data == ["train", "validate", "test"]
-        # with self.get_hdf5io() as io:  # TODO fix this test
-        #     io.write(rt)
+        with self.get_hdf5io() as io:
+            io.write(rt)
 
     def test_add_cv_split(self):
         rt = ResultsTable(name="foo", description="a test results table")
