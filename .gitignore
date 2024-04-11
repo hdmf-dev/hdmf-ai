@@ -45,3 +45,6 @@ coverage.xml
 
 # DS_Store
 .DS_Store
+
+.zip
+.nwb
