@@ -54,7 +54,7 @@ Modern AI approaches, such as deep learning, are powerful at uncovering subtle s
 
 Using the HDMF API, the `ResultsTable` can easily be added to datasets that follow an HDMF-based standard, such as Neurodata Without Borders [@rubel2022neurodata], a popular data standard for neurophysiology, and HDMF-Seq, a format for storing taxonomic and genomic sequence data [@Tritt_deep-taxon]. HDMF provides core functionality that allows `HDMF-AI` users to store AI results using advanced features and options for efficient storage and access, such as chunking, compression, and selective streaming from an S3 bucket. Users can write results to an HDF5 file, a popular file format for scientific data and high-performance computing [@hdf5], or a Zarr store, a new format optimized for cloud computing [@zarr]. By leveraging existing HDMF tools and standards, `HDMF-AI` provides a scalable and extensible framework for storing AI results in an accessible, standardized way that is compatible with other HDMF-based data formats. By enabling standardized co-storage of data and AI results, `HDMF-AI` may enhance the reproducibility and explainability of AI for science.
 
-![UML diagram of the HDMF-AI schema. Data types with orange headers are introduced by HDMF-AI. Data types with blue headers are defined in HDMF. Fields colored in gray are optional.\label{fig:schema}](../schema.png)
+![UML diagram of the HDMF-AI schema. Data types with orange headers are introduced by HDMF-AI. Data types with blue headers are defined in HDMF. Fields colored in gray are optional.\label{fig:schema}](schema.png)
 
 # Acknowledgements
 
