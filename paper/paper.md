@@ -19,10 +19,10 @@ authors:
   - name: Andrew Tritt
     orcid: 0000-0002-1617-449X
     affiliation: 2
-  - name: Marcin Joachimiak
+  - name: Marcin P. Joachimiak
     orcid: 0000-0001-8175-045X
     affiliation: 3
-  - name: Kris Bouchard
+  - name: Kristofer Bouchard
     orcid: 0000-0002-1974-4603
     affiliation: "1, 4, 5, 6"
 affiliations:
