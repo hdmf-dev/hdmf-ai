@@ -454,3 +454,35 @@ class ResultsTable(_AutoGenResultsTable):
         # `n_dims` kwarg is passed into `__add_col` and will be read as the length of the second dimension
         # of the data only if the `data` kwarg is None.
         return self.__add_col(EmbeddedValues, **kwargs)
+
+    @docval(
+        {
+            "name": "data",
+            "type": ("array_data", "data"),
+            "doc": "Embedding (float) of each sample.",
+            "default": None,
+        },
+        {
+            "name": "description",
+            "type": str,
+            "doc": "A description for this column.",
+            "default": "A column to store embeddings, e.g., from dimensionality reduction, for each sample.",
+        },
+        {
+            "name": "n_dims",
+            "type": int,
+            "doc": (
+                "The number of dimensions in the embedding, "
+                "used to define the shape of the column only if data is None"
+            ),
+            "default": None,
+        },
+    )
+    def add_viz_embedding(self, **kwargs):
+        """Add embedding (a.k.a. transformation or representation) of each sample."""
+        kwargs["name"] = "viz_embedding"
+        kwargs["dtype"] = float
+        kwargs["dim2_kwarg"] = "n_dims"
+        # `n_dims` kwarg is passed into `__add_col` and will be read as the length of the second dimension
+        # of the data only if the `data` kwarg is None.
+        return self.__add_col(EmbeddedValues, **kwargs)
