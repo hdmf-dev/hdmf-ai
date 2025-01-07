@@ -44,7 +44,7 @@ dependencies = [
     "numpy>=1.21",
     "scikit-learn>=1",
 ]
-version = "0.2.0"
+version = "0.3.0"
 # dynamic = ["version"]
 
 [project.urls]

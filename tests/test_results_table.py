@@ -122,6 +122,12 @@ class ResultsTableTest(TestCase):
         with self.get_hdf5io() as io:
             io.write(rt)
 
+    def test_add_viz_embedding(self):
+        rt = ResultsTable(name="foo", description="a test results table")
+        rt.add_viz_embedding([[1.1, 2.9], [1.2, 2.8], [1.3, 2.7], [1.4, 2.6], [1.5, 2.5]])
+        with self.get_hdf5io() as io:
+            io.write(rt)
+
     def test_add_topk_classes(self):
         rt = ResultsTable(name="foo", description="a test results table")
         rt.add_topk_classes([[1, 2], [3, 4], [5, 6], [7, 8], [9, 0]])

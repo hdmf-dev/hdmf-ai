@@ -185,4 +185,8 @@ groups:
     data_type_inc: EmbeddedValues
     doc: A column to store embeddings, e.g., from dimensionality reduction, for each sample.
     quantity: '?'
+  - name: viz_embedding
+    data_type_inc: EmbeddedValues
+    doc: A column to store embeddings meant for visualization.
+    quantity: '?'
 
