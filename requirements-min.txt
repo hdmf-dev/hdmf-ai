@@ -1,4 +1,4 @@
 # minimum versions of package dependencies for installing HDMF-AI, used in testing
 hdmf==3.5.1
-numpy==1.21
+numpy==1.22
 scikit-learn==1.0
